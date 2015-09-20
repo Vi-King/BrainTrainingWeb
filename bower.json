@@ -1,0 +1,29 @@
+{
+  "name": "BrainTrainingWeb",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Vi-King/BrainTrainingWeb",
+  "authors": [
+    "wata <wata.gm@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handlebars": "~4.0.2",
+    "jquery": "~2.1.4",
+    "semantic": "semantic-ui#~2.1.4"
+  },
+  "overrides": {
+    "semantic": {
+      "main": [
+        "dist/semantic.min.js",
+        "dist/semantic.min.css"
+      ]
+    }
+  }
+}
