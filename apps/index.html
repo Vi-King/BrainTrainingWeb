@@ -8,32 +8,38 @@
 
     <!-- Site Properities -->
     <title>Responsive Elements - Semantic</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/vendor.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/app.css">
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
-
+    <script src="./javascripts/vendor.js"></script>
+    <script src="./javascripts/app.js"></script>
   </head>
   <body>
-    <div>
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '1498243540495166',
-            xfbml      : true,
-            version    : 'v2.4'
-          });
-        };
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1498243540495166',
+          xfbml      : true,
+          version    : 'v2.4'
+        });
+      };
 
-        (function(d, s, id){
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return;}
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-      </script>
-
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="game-box">
+      <div class="ui fluid card">
+        <div class="content">
+          <div class="header" style="text-align: center;">正しい略記はどれ？</div>
+        </div>
+        <div class="content" id="question">
+        </div>
+      </div>
       <h1 class="ui center aligned header">地頭力診断</h1>
       <div class="ui container">
         <div class="ui grid">
@@ -52,11 +58,11 @@
             </button>
           </div>
         </div>
-        <div class="ui segments">
+        <!--div class="ui segments">
           <div class="ui segment">Content</div>
           <div class="ui segment">Content</div>
           <div class="ui segment">Content</div>
-        </div>
+        </div-->
       </div>
       <style>
         .last.container {
@@ -73,24 +79,68 @@
           // padding: 0.5em 0em;
         }
       </style>
-      <script>
-        (function () {
-          $("#jsi-btn-start").on("click", function () {
-            FB.getLoginStatus(function(response) {
-              console.log(response);
-              if (response.status !== 'connected') {
-                FB.login(function(response){
-                  if (response.status === 'connected') {
-                    console.log("login success, next page");
-                  }
-                });
-              } else {
-                console.log("connected, next page");
-              }
-            });
-          });
-        })();
-      </script>
     </div>
+    <script type="handlebars" id="result-view-tmpl">
+      <div class="row">スコア</div>
+      <div class="row">{{score}}点</div>
+      <div class="ui fluid card">
+        <div class="content">
+          <div class="header" style="text-align: center;">地頭偏差値</div>
+        </div>
+        <div class="content" id="question">
+          {{deviation}}
+        </div>
+      </div>
+      あなたの地頭は・・・<br>
+      ・{{people}}人に一人<br>
+      ・東大合格率{{percent}}％<br>
+      ・ふさわしい年収は{{income}}万円<br>
+      <button class="ui button basic">リトライ</button>
+      <button class="ui button basic">メニュー</button>
+    </script>
+    <script type="handlebars" id="abbreviation-question-tmpl">
+      <h4 class="ui sub header" style="text-align: center;">{{name}}</h4>
+      <div class="ui grid">
+        <div class="two wide column"></div>
+        <div class="twelve wide column">
+          <div class="square ans" data-res="{{a1res}}">
+            <div class="content">
+              <div class="table">
+                <div class="table-cell">
+                  {{a1}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="square ans" data-res="{{a2res}}">
+            <div class="content">
+              <div class="table">
+                <div class="table-cell">
+                  {{a2}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="square ans" data-res="{{a3res}}">
+            <div class="content">
+              <div class="table">
+                <div class="table-cell">
+                  {{a3}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="square ans" data-res="{{a4res}}">
+            <div class="content">
+              <div class="table">
+                <div class="table-cell">
+                  {{a4}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="two wide column"></div>
+        </div>
+      </script>
     </body>
   </html>
