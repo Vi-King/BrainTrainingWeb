@@ -23,10 +23,10 @@ class ResultView extends View
 
     @el.empty().append @tmpl({
       score:     score
-      deviation: Math.round(deviation * 10) / 10
       people:    people
       percent:   percent
       income:    income
     })
+    new CountUp('deviation', 0.0, Math.round(deviation * 10) / 10, 1).start()
 
 module.exports = ResultView
