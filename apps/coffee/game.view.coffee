@@ -6,6 +6,7 @@ class GameView extends View
     $('body').append $('<div class="count-down" id="count-down" />')
     $('body').append $('<div id="result"></div>')
     @el.prepend $("<div class='row'><span class='right floated'>タイム　<span id='timer'>#{@sec}.0</span></span></div>")
+    @el.prepend $("<div id='time-over' style='display: none;'>time over</div>")
 
   init: ->
     @count_down(3)
@@ -34,9 +35,10 @@ class GameView extends View
       $('#timer').text '0.0'
       @show_time_over()
     else
-      $('#timer').text Math.round(t / 100) / 10
+      $('#timer').text (Math.round(t / 100) / 10).toFixed(1)
 
   show_time_over: ->
+    $('#time-over').show()
     setTimeout @end, 1000
 
   end: ->
