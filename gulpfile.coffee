@@ -8,6 +8,7 @@ browserify = require 'browserify'
 source     = require 'vinyl-source-stream'
 watchify   = require 'watchify'
 sass       = require 'gulp-sass'
+notify     = require 'gulp-notify'
 
 gulp.task 'js', ->
   browserify
@@ -15,6 +16,7 @@ gulp.task 'js', ->
     extensions: ['.coffee', '.js']
   .transform 'coffeeify'
   .bundle()
+  .on 'error', handleErrors
   .pipe source 'app.js'
   .pipe gulp.dest './build/javascripts/'
 
@@ -51,3 +53,11 @@ gulp.task 'build', ['vendor', 'js', 'css', 'copy']
 
 gulp.task 'watch', ['vendor', 'js', 'css', 'copy'], ->
   gulp.watch './apps/**/*', ['vendor', 'js', 'css', 'copy']
+
+handleErrors = (err) ->
+  console.log err
+  notify({
+    title: "Compile Error",
+    message: "<%= err.message %>"
+  })
+  @emit 'end'
