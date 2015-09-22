@@ -1,8 +1,8 @@
 Game = require './game'
-View = require './abbreviation.view'
-Questions = require './abbreviation_questions'
+View = require './four_operations.view'
+Questions = require './four_operations_questions'
 
-class Abbreviation extends Game
+class FourOperations extends Game
 
   constructor: (box_id) ->
     # format questions
@@ -10,21 +10,15 @@ class Abbreviation extends Game
     @results = []
     # initialize view
     @view = new View(box_id, 60)
-    @view.set_view_template '#abbreviation-question-tmpl'
+    @view.set_view_template '#four-operations-question-tmpl'
     @view.on 'start': @, 'end': @, 'answered': @
     # count down start
-    @view.init()
+    @view.init(@questions)
 
   start: =>
     console.log 'start game'
-    @view.show_question @pick_question()
-
-  pick_question: ->
-    n = Math.floor(Math.random() * @questions.length)
-    @questions[n]
 
   answered: (result) ->
     @results.push result
-    @view.show_question @pick_question()
 
-module.exports = Abbreviation
+module.exports = FourOperations

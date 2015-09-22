@@ -1,12 +1,40 @@
 class FourOperationsQuestions
 
+
+  @operations = [
+    {
+      op: "+"
+      calc: (l, r) ->
+        l + r
+
+    }
+    {
+      op: "-"
+      calc: (l, r) ->
+        l - r
+
+    }
+    {
+      op: "*",
+      calc: (l, r) ->
+        l * r
+
+    }
+    {
+      op: "/",
+      calc: (l, r) ->
+        l / r
+
+    }
+  ]
+
   @createNormalOperand = ->
     operand =
       l: Math.floor(Math.random() * 10)
       r: Math.floor(Math.random() * 10)
     operand
 
-  @createDivisibleOperand = ->
+  @createDivOperand = ->
     divisibleCombination = [
       [1, 2, 3, 4, 5, 6, 7, 8, 9]
       [1]
@@ -26,42 +54,29 @@ class FourOperationsQuestions
       r: candidates[Math.floor(Math.random() * candidates.length)]
     operand
 
+  @createMinusOperand = ->
+    l = Math.floor(Math.random() * 10)
+    operand =
+      l: l
+      r: Math.floor(Math.random() * l)
+    operand
+
+  @calcAnswers = (l, r, a) ->
+
+
   @createQuestion = ->
-    operations = [
-      {
-        op: "+",
-        calc: (l, r) ->
-          l + r
-
-      }
-      {
-        op: "-",
-        calc: (l, r) ->
-          l - r
-
-      }
-      {
-        op: "*",
-        calc: (l, r) ->
-          l * r
-
-      }
-      {
-        op: "/",
-        calc: (l, r) ->
-          l / r
-
-      }
-    ]
     operationIndex = Math.floor(Math.random() * 4)
-    operation = operations[operationIndex]
+    operation = FourOperations.operasions[operationIndex]
     operand = undefined
 
-    if operationIndex != 3
-      operand = FourOperationsQuestions.createNormalOperand
-    else
-      operand = FourOperationsQuestions.createDivisibleOperand
-     
+    switch operationIndex
+      when 1
+        operand = FourOperationsQuestions.createMinusOperand()
+      when 3
+        operand = FourOperationsQuestions.createDivOperand()
+      else
+        operand = FourOperationsQuestions.createNormalOperand()
+
     q =
       left: operand.l
       right: operand.r
@@ -74,8 +89,10 @@ class FourOperationsQuestions
     q = []
     i = 0
     while i < 30
-      q.push FourOperationsQuestions.createQuestion
+      q.push FourOperationsQuestions.createQuestion()
       i++
-    q
+    {
+      questions: q
+    }
 
 module.exports = FourOperationsQuestions

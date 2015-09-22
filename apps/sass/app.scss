@@ -79,14 +79,20 @@
   }
 }
 
-.four-ope-q-font {
-  font-size: 50px;
-  line-height: 1em;
-}
-
 .ope-q-box {
-  width: 50px;
+  width: 42px;
   border-style: solid;
   margin: auto;
 }
 
+#four-ope-questions {
+  font-size: 41px;
+  line-height: 1em;
+  height: 222px;
+  overflow: hidden;
+}
+
+.ui.grid>.row>.column.four-ope-answer-col {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
