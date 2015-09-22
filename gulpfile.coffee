@@ -46,7 +46,7 @@ gulp.task 'bower', ->
   bower {cmd: 'update'}
 
 gulp.task 'copy', ->
-  gulp.src ['apps/*.html'], { base: 'apps' }
+  gulp.src ['apps/**/*.html'], { base: 'apps' }
   .pipe gulp.dest('./build/')
 
 gulp.task 'build', ['vendor', 'js', 'css', 'copy']
