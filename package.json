@@ -21,7 +21,8 @@
     "vinyl-source-stream": "~1.1.0",
     "coffeeify": "~1.1.0",
     "watchify": "~3.4.0",
-    "gulp-sass": "~2.0.4"
+    "gulp-sass": "~2.0.4",
+    "gulp-notify": "~2.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
