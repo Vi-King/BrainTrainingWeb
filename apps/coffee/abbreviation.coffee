@@ -36,7 +36,7 @@ class Abbreviation extends Game
     time = (@end_time - new Date().getTime()) / 1000;
     time = 0 if time < 0
     r = @results.filter (x) -> x
-    score = (120 * r.length) - (60 * @results.length - r.length) + (Math.floor(time) * 10);
+    score = (120 * r.length) - (60 * (@results.length - r.length)) + (Math.floor(time) * 10);
     @show_result score
 
 module.exports = Abbreviation
