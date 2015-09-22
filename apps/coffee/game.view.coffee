@@ -2,7 +2,10 @@ View = require './view'
 
 class GameView extends View
   constructor: (box_id, @sec) ->
+    throw new Error("please pass selector for game view.") unless box_id
     @el = $ box_id
+    throw new Error("game box(#{box_id}) does not exists.") if @el.length == 0
+
     $('body').append $('<div class="count-down" id="count-down" />')
     $('body').append $('<div id="result"></div>')
     @el.prepend $("<div class='row'><span class='right floated'>タイム　<span id='timer'>#{@sec}.0</span></span></div>")

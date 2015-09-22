@@ -9,6 +9,19 @@ class AbbreviationView extends GameView
     $(document).on 'click', '.ans', ->
       that.answered $(@).data('res')
     super()
+    @setup()
+
+  setup: ->
+    @init_tmpl = Handlebars.compile """
+<div class="ui fluid card">
+  <div class="content">
+    <div class="header" style="text-align: center;">正しい略記はどれ？</div>
+  </div>
+  <div class="content" id="question">
+  </div>
+</div>
+"""
+    @el.empty().append @init_tmpl()
 
   show_question: (question) ->
     $('#question').empty().append(@tmpl(question))
