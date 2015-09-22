@@ -1,41 +1,53 @@
 class FourOperationsQuestions
 
-
-  @operations = [
+  operations = [
     {
-      op: "+"
-      calc: (l, r) ->
-        l + r
-
-    }
-    {
-      op: "-"
-      calc: (l, r) ->
-        l - r
+     op: '＋'
+     calc: (l, r) ->
+       l + r
 
     }
     {
-      op: "*",
-      calc: (l, r) ->
-        l * r
+     op: '−'
+     calc: (l, r) ->
+       l - r
 
-    }
-    {
-      op: "/",
-      calc: (l, r) ->
-        l / r
+   }
+   {
+     op: '×'
+     calc: (l, r) ->
+       l * r
+
+   }
+   {
+     op: '÷'
+     calc: (l, r) ->
+       if (l != 0 and l < r) or r == 0 or l % r != 0
+         return NaN
+       l / r
 
     }
   ]
 
-  @createNormalOperand = ->
+  create_answers = (l, r, answer_value, answer_ope_index) ->
+    answers = []
+    i = 0
+    while i < operations.length
+      if i == answer_ope_index
+        answers.push true
+      else
+        answers.push operations[i].calc(l, r) == answer_value
+      i++
+    answers
+
+  create_normal_operand = ->
     operand =
       l: Math.floor(Math.random() * 10)
       r: Math.floor(Math.random() * 10)
     operand
 
-  @createDivOperand = ->
-    divisibleCombination = [
+  create_div_operand = ->
+    divisible_combination = [
       [1, 2, 3, 4, 5, 6, 7, 8, 9]
       [1]
       [1, 2]
@@ -48,51 +60,47 @@ class FourOperationsQuestions
       [1, 3, 9]
     ]
     l = Math.floor(Math.random() * 10)
-    candidates = divisibleCombination[l]
+    candidates = divisible_combination[l]
     operand =
       l: l
       r: candidates[Math.floor(Math.random() * candidates.length)]
     operand
 
-  @createMinusOperand = ->
+  create_minus_operand = ->
     l = Math.floor(Math.random() * 10)
     operand =
       l: l
       r: Math.floor(Math.random() * l)
     operand
 
-  @calcAnswers = (l, r, a) ->
-
-
-  @createQuestion = ->
-    operationIndex = Math.floor(Math.random() * 4)
-    operation = FourOperations.operasions[operationIndex]
+  create_question = ->
+    operation_index = Math.floor(Math.random() * 4)
+    operation = operations[operation_index]
     operand = undefined
 
-    switch operationIndex
+    switch operation_index
       when 1
-        operand = FourOperationsQuestions.createMinusOperand()
+        operand = create_minus_operand()
       when 3
-        operand = FourOperationsQuestions.createDivOperand()
+        operand = create_div_operand()
       else
-        operand = FourOperationsQuestions.createNormalOperand()
+        operand = create_normal_operand()
 
+    calc_result = operation.calc(operand.l, operand.r)
     q =
       left: operand.l
       right: operand.r
-      calcResult: operation.calc(operand.l, operand.r)
-      answerIndex: operationIndex
-      answerOperation: operation.op
+      calc_result: calc_result
+      answers: create_answers(operand.l, operand.r, calc_result, operation_index)
+      answer_operation: operation.op
     q
 
   @data = ->
     q = []
     i = 0
     while i < 30
-      q.push FourOperationsQuestions.createQuestion()
+      q.push create_question()
       i++
-    {
-      questions: q
-    }
+    q
 
 module.exports = FourOperationsQuestions
