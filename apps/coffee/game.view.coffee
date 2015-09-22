@@ -31,10 +31,13 @@ class GameView extends View
     @end_time = new Date().getTime() + (@sec * 1000)
     @timer_id = setInterval @timer, 100
 
+  stop_timer: =>
+    clearInterval @timer_id
+
   timer: =>
     t = @end_time - new Date().getTime()
     if t <= 0
-      clearInterval @timer_id
+      @stop_timer()
       $('#timer').text '0.0'
       @show_time_over()
     else
@@ -44,8 +47,8 @@ class GameView extends View
     $('#time-over').show()
     setTimeout @end, 1000
 
-  end: ->
-    console.debug 'game view end'
+  end: =>
+    @stop_timer()
 
   show_question: (question) ->
 

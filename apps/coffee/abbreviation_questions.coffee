@@ -13,7 +13,7 @@ class AbbreviationQuestions
     copy
 
   @data = ->
-    AbbreviationQuestions.questions.split("\n").map (line) =>
+    list = AbbreviationQuestions.questions.split("\n").map (line) =>
       dat = line.split(',')
       q = {name: dat[0], c: dat[1]}
       ans = AbbreviationQuestions.shuffle(dat.slice(1, 5))
@@ -21,6 +21,26 @@ class AbbreviationQuestions
         q["a#{idx + 1}"] = a
         q["a#{idx + 1}res"] = a == q.c
       q
+    list = AbbreviationQuestions.generate_randomx(list.length, 20).map (idx) ->
+      list[idx]
+    AbbreviationQuestions.shuffle list
+
+  @generate_randomx = (max, num) ->
+    generated = new Array
+    generatedCount = generated.length
+    i = 0
+    while i < num
+      candidate = Math.floor(Math.random() * max)
+      j = 0
+      while j < generatedCount
+        if candidate == generated[j]
+          candidate = Math.floor(Math.random() * max)
+          j = -1
+        j++
+      generated[i] = candidate
+      generatedCount++
+      i++
+    generated
 
   @questions = """
 構内ネットワーク,LAN,LON,LAL,KAN

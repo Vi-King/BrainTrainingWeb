@@ -25,4 +25,3 @@ $ ->
             new Abbreviation('#game-box')
       else
         new Abbreviation('#game-box')
-
