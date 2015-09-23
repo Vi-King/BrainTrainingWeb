@@ -24,6 +24,13 @@ class ResultView extends View
     percent = 0 if percent < 0
 
     @el.empty().append @tmpl()
+    $(document).on 'click', '#fb-share-result-btn', ->
+      FB.ui {
+        method: 'feed'
+        link: location.href
+        caption: 'あなたの地頭偏差値は。。。' + deviation
+      }, (response) ->
+
     new CountUp('score', 0, score).start()
     new CountUp('people', 0, people).start()
     new CountUp('percent', 0, Math.round(percent)).start()

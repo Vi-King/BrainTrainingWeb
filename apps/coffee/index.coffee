@@ -68,3 +68,4 @@ $ ->
         start_game()
 
   init_common_views()
+

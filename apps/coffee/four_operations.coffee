@@ -26,7 +26,6 @@ class FourOperations extends Game
   end: =>
     time = (@end_time - new Date().getTime()) / 1000;
     time = 0 if time < 0
-    console.log(@results)
     r = @results.filter (x) -> x
     score = (60 * r.length) - (120 * (@results.length - r.length)) + (Math.floor(time) * 50);
     @show_result score

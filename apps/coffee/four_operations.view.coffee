@@ -24,7 +24,7 @@ class FourOperationsView extends GameView
       
       # 結果を溜め込む
       result = questions[now_question_index].answers[$answered.data("index")] 
-      console.log(questions[now_question_index].answers)
+      # console.log(questions[now_question_index].answers)
       that.answered result
       
       # 問題に o/x つける
@@ -42,6 +42,7 @@ class FourOperationsView extends GameView
       $(children[0]).slideUp 80, ->
         $(@).remove()
         $('#ope-q-box-' + next_question_index).css 'border-color', 'red'
+
     super()
 
 module.exports = FourOperationsView
