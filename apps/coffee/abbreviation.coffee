@@ -4,7 +4,7 @@ Questions = require './abbreviation_questions'
 
 class Abbreviation extends Game
 
-  @GAME_TIME = 60
+  @GAME_TIME = 1
 
   constructor: (box_id) ->
     # format questions
@@ -12,7 +12,7 @@ class Abbreviation extends Game
     @results = []
     # initialize view
     @view = new View(box_id, Abbreviation.GAME_TIME)
-    @view.set_view_template '#abbreviation-question-tmpl'
+    @view.set_view_template '#question-tmpl'
     @view.on 'start': @, 'end': @, 'answered': @
     # count down start
     @view.init()
