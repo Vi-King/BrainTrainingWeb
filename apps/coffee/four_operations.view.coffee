@@ -5,7 +5,7 @@ class FourOperationsView extends GameView
     super box_id, sec
 
   init: (questions) ->
-    @el.empty().append(@tmpl({questions: questions}))
+    @screen.empty().append(@tmpl({questions: questions}))
     $("#ope-q-box-0").css("border-color", "red")
 
     that = @
