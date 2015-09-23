@@ -4,7 +4,7 @@ Questions = require './abbreviation_questions'
 
 class Abbreviation extends Game
 
-  @GAME_TIME = 1
+  @GAME_TIME = 60
 
   constructor: (box_id) ->
     # format questions
