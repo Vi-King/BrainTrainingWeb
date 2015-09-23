@@ -8,8 +8,16 @@ build:
     - script:
         name: run bower install
         code: bower install
+    - script:
+        name: install gulp
+        code: npm install gulp
     - gulp:
         code: gulp build
+  after-steps:
+    - wantedly/pretty-slack-notify:
+        team: Galleons
+        webhook_url: $SLACK_WEBHOOK_URL
+        channel: btweb
 deploy:
   steps:
     - s3sync:
@@ -17,3 +25,8 @@ deploy:
         key_secret: $SECRET
         bucket_url: $URL
         source_dir: build/
+  after-steps:
+    - wantedly/pretty-slack-notify:
+        team: Galleons
+        webhook_url: $SLACK_WEBHOOK_URL
+        channel: btweb
