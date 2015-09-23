@@ -8,8 +8,10 @@ class GameView extends View
 
     $('body').append $('<div class="count-down" id="count-down" />')
     $('body').append $('<div id="result"></div>')
-    @el.prepend $("<div class='row'><span class='right floated'>タイム　<span id='timer'>#{@sec}.0</span></span></div>")
+    @el.prepend $("<div class='row game-timer'><span class='right floated'>タイム　<span id='timer'>#{@sec}.0</span></span></div>")
     @el.prepend $("<div id='time-over' style='display: none;'>time over</div>")
+    @screen = $('<div id="game-screen"></div>')
+    @el.append @screen
 
   init: ->
     @count_down(3)
