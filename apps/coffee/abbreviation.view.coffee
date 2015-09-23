@@ -21,7 +21,7 @@ class AbbreviationView extends GameView
   </div>
 </div>
 """
-    @el.empty().append @init_tmpl()
+    @screen.empty().append @init_tmpl()
 
   show_question: (question) ->
     $('#question').empty().append(@tmpl(question))

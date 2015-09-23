@@ -41,6 +41,8 @@ gulp.task 'vendor', ->
   .pipe plumber()
   .pipe concat('vendor.css')
   .pipe gulp.dest('./build/stylesheets/')
+  gulp.src ['./bower_components/semantic/dist/themes/**/*'], { base: './bower_components/semantic/dist' }
+  .pipe gulp.dest('./build/stylesheets/')
 
 gulp.task 'bower', ->
   bower {cmd: 'update'}

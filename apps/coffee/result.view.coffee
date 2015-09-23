@@ -5,6 +5,8 @@ class ResultView extends View
     @el = $ box_id
 
   init: (score) ->
+    $(document).on 'click', '.jsi-retry-btn', ->
+      location.reload()
     deviation = 50.0 + ((score - 2000.0 ) / 60.0) # 偏差値
     people = Math.floor(Math.pow(100, ((deviation - 50) / 10))) # 何人に一人
     percent = (deviation - 50) * 4 # 東大合格率
@@ -21,12 +23,11 @@ class ResultView extends View
     # マイナスの場合0にする
     percent = 0 if percent < 0
 
-    @el.empty().append @tmpl({
-      score:     score
-      people:    people
-      percent:   percent
-      income:    income
-    })
+    @el.empty().append @tmpl()
+    new CountUp('score', 0, score).start()
+    new CountUp('people', 0, people).start()
+    new CountUp('percent', 0, Math.round(percent)).start()
     new CountUp('deviation', 0.0, Math.round(deviation * 10) / 10, 1).start()
+    new CountUp('income', 0, income).start()
 
 module.exports = ResultView

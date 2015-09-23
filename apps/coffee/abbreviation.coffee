@@ -12,7 +12,7 @@ class Abbreviation extends Game
     @results = []
     # initialize view
     @view = new View(box_id, Abbreviation.GAME_TIME)
-    @view.set_view_template '#abbreviation-question-tmpl'
+    @view.set_view_template '#question-tmpl'
     @view.on 'start': @, 'end': @, 'answered': @
     # count down start
     @view.init()
