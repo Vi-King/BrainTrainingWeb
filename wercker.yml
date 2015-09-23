@@ -1,0 +1,19 @@
+box: nodesource/trusty
+build:
+  steps:
+    - npm-install
+    - script:
+        name: install bower
+        code: sudo npm install -g bower gulp
+    - script:
+        name: run bower install
+        code: bower install
+    - gulp:
+        code: gulp build
+deploy:
+  steps:
+    - s3sync:
+        key_id: $KEY
+        key_secret: $SECRET
+        bucket_url: $URL
+        source_dir: build/
