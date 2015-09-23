@@ -5,6 +5,7 @@ class GameView extends View
     throw new Error("please pass selector for game view.") unless box_id
     @el = $ box_id
     throw new Error("game box(#{box_id}) does not exists.") if @el.length == 0
+    @el.empty()
 
     $('body').append $('<div class="count-down" id="count-down" />')
     $('body').append $('<div id="result"></div>')
