@@ -39,46 +39,29 @@
     </div>
     <script id="question-tmpl" type="text/x-handlebars-template">
       <h4 class="ui sub header" style="text-align: center;">{{name}}</h4>
-      <div class="ui grid">
-        <div class="two wide column"></div>
-        <div class="twelve wide column">
-          <div class="square ans" data-res="{{a1res}}">
-            <div class="content">
-              <div class="table">
-                <div class="table-cell">
-                  {{a1}}
-                </div>
-              </div>
-            </div>
+      <div class="ui vertically divided grid">
+        <div class="two column row center aligned">
+          <div class="column">
+            <button class="massive fluid teal ui button ans abb-ans-btn" data-res="{{a1res}}">
+              {{a1}}
+            </button>
           </div>
-          <div class="square ans" data-res="{{a2res}}">
-            <div class="content">
-              <div class="table">
-                <div class="table-cell">
-                {{a2}}
-                </div>
-              </div>
-            </div>
+          <div class="column">
+            <button class="massive fluid teal ui button ans abb-ans-btn" data-res="{{a2res}}">
+              {{a2}}
+            </button>
           </div>
-          <div class="square ans" data-res="{{a3res}}">
-            <div class="content">
-              <div class="table">
-                <div class="table-cell">
-                {{a3}}
-                </div>
-              </div>
-            </div>
+          <div class="column">
+            <button class="massive fluid teal ui button ans abb-ans-btn" data-res="{{a3res}}">
+              {{a3}}
+            </button>
           </div>
-          <div class="square ans" data-res="{{a4res}}">
-            <div class="content">
-              <div class="table">
-                <div class="table-cell">
-                {{a4}}
-                </div>
-              </div>
-            </div>
+          <div class="column">
+            <button class="massive fluid teal ui button ans abb-ans-btn" data-res="{{a4res}}">
+              {{a4}}
+            </button>
           </div>
-        <div class="two wide column"></div>
+        </div>
       </div>
     </script>
   </body>
