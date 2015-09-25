@@ -39,56 +39,63 @@
       <div id="footer"></div>
     </div>
     <script type="handlebars" id="four-operations-question-tmpl">
-      <div id="four-ope-questions">
-        <div class="ui equal width center aligned padded grid" id="four-ope-q-table">
-          <div class="row">
-            <div class="column">&nbsp;</div>
-          </div>
-          {{#each questions}}
-          <div class="row" data-index="{{@index}}">
-            <div class="column">
-              {{this.left}}
+      <div class="ui fluid card">
+        <div class="content">
+          <div class="header" style="text-align: center;">赤枠に当てはまる四則記号を選べ</div>
+        </div>
+        <div class="content">
+          <div id="four-ope-questions">
+            <div class="ui equal width center aligned padded grid" id="four-ope-q-table">
+              <div class="row">
+                <div class="column">&nbsp;</div>
+              </div>
+              {{#each questions}}
+              <div class="row" data-index="{{@index}}">
+                <div class="column">
+                  {{this.left}}
+                </div>
+                <div class="column">
+                  <div class="ope-q-box" id="ope-q-box-{{@index}}">
+                    　
+                  </div>
+                </div>
+                <div class="column">
+                  {{this.right}}
+                </div>
+                <div class="column">
+                  =
+                </div>
+                <div class="column">
+                  {{this.calc_result}}
+                </div>
+              </div>
+              {{/each}}
             </div>
-            <div class="column">
-              <div class="ope-q-box" id="ope-q-box-{{@index}}">
-                　
+          </div>
+          <div id="four-ope-answer">
+            <div class="ui vertically divided grid">
+              <div class="three column row center aligned">
+                <div class="column four-ope-answer-col">&nbsp;</div>
+                <div class="column four-ope-answer-col">
+                  <button class="massive teal ui button four-ope-answer-btn" data-index="0">＋</button>
+                </div>
+                <div class="column four-ope-answer-col">&nbsp;</div>
+
+                <div class="column four-ope-answer-col">
+                  <button class="massive teal ui button four-ope-answer-btn" data-index="3">÷</button>
+                </div>
+                <div class="column four-ope-answer-col">&nbsp;</div>
+                <div class="column four-ope-answer-col">
+                  <button class="massive teal ui button four-ope-answer-btn" data-index="2">×</button>
+                </div>
+
+                <div class="column four-ope-answer-col">&nbsp;</div>
+                <div class="column four-ope-answer-col">
+                  <button class="massive teal ui button four-ope-answer-btn" data-index="1">−</button>
+                </div>
+                <div class="column four-ope-answer-col">&nbsp;</div>
               </div>
             </div>
-            <div class="column">
-              {{this.right}}
-            </div>
-            <div class="column">
-              =
-            </div>
-            <div class="column">
-              {{this.calc_result}}
-            </div>
-          </div>
-          {{/each}}
-        </div>
-      </div>
-      <div id="four-ope-answer">
-        <div class="ui vertically divided grid">
-          <div class="three column row center aligned">
-            <div class="column four-ope-answer-col">&nbsp;</div>
-            <div class="column four-ope-answer-col">
-              <button class="massive teal ui button four-ope-answer-btn" data-index="0">＋</button>
-            </div>
-            <div class="column four-ope-answer-col">&nbsp;</div>
-
-            <div class="column four-ope-answer-col">
-              <button class="massive teal ui button four-ope-answer-btn" data-index="3">÷</button>
-            </div>
-            <div class="column four-ope-answer-col">&nbsp;</div>
-            <div class="column four-ope-answer-col">
-              <button class="massive teal ui button four-ope-answer-btn" data-index="2">×</button>
-            </div>
-
-            <div class="column four-ope-answer-col">&nbsp;</div>
-            <div class="column four-ope-answer-col">
-              <button class="massive teal ui button four-ope-answer-btn" data-index="1">−</button>
-            </div>
-            <div class="column four-ope-answer-col">&nbsp;</div>
           </div>
         </div>
       </div>

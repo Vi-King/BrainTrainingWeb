@@ -7,6 +7,7 @@ class ResultView extends View
   init: (score) ->
     $(document).on 'click', '.jsi-retry-btn', ->
       location.reload()
+
     deviation = 50.0 + ((score - 2000.0 ) / 60.0) # 偏差値
     people = Math.floor(Math.pow(100, ((deviation - 50) / 10))) # 何人に一人
     percent = (deviation - 50) * 4 # 東大合格率
@@ -28,7 +29,7 @@ class ResultView extends View
       FB.ui {
         method: 'feed'
         link: location.href
-        caption: 'あなたの地頭偏差値は。。。' + deviation
+        name: '私の地頭力偏差値は' + Math.round(deviation * 10) / 10 + '！東大合格率は' + Math.round(percent) + '%、期待年収は' + income + '万円でした！'
       }, (response) ->
 
     new CountUp('score', 0, score).start()
