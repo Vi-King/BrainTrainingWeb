@@ -30,6 +30,7 @@ class ResultView extends View
         method: 'feed'
         link: location.href
         name: '私の地頭力偏差値は' + Math.round(deviation * 10) / 10 + '！東大合格率は' + Math.round(percent) + '%、期待年収は' + income + '万円でした！'
+        caption: 'あなたの地頭力は？地頭力診断 WEB'
       }, (response) ->
 
     new CountUp('score', 0, score).start()
