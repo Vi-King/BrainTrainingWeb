@@ -14,15 +14,26 @@
   color: tomato;
 }
 
-#result {
-  font-size: 24em;
+#result-true {
+  font-size: 42em;
   line-height: 1;
   z-index: 1000;
   position: absolute;
-  top: 120px;
+  top: -14px;
   text-align: center;
   width: 100%;
   color: tomato;
+}
+
+#result-false {
+  font-size: 28em;
+  line-height: 1;
+  z-index: 1000;
+  position: absolute;
+  top: 124px;
+  text-align: center;
+  width: 100%;
+  color: blue;
 }
 
 #deviation {

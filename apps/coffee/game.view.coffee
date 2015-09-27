@@ -8,7 +8,8 @@ class GameView extends View
     @el.empty()
 
     $('body').append $('<div class="count-down" id="count-down" />')
-    $('body').append $('<div id="result"></div>')
+    $('body').append $('<div id="result-true"></div>')
+    $('body').append $('<div id="result-false"></div>')
     @el.prepend $("<div class='row game-timer'><span class='right floated'>タイム　<span id='timer'>#{@sec}.0</span></span></div>")
     @el.prepend $("<div id='time-over' style='display: none;'>time over</div>")
     @screen = $('<div id="game-screen"></div>')
@@ -56,6 +57,6 @@ class GameView extends View
   show_question: (question) ->
 
   answered: (result) ->
-    $('#result').text({'true': '◯', 'false': '☓'}[result]).show().fadeOut 500
+    $('#result-' + result).text({'true': '○', 'false': '×'}[result]).show().fadeOut 500
 
 module.exports = GameView

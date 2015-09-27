@@ -8,7 +8,7 @@ class ResultView extends View
     $(document).on 'click', '.jsi-retry-btn', ->
       location.reload()
 
-    deviation = 50.0 + ((score - 2000.0 ) / 60.0) # 偏差値
+    deviation = 60.0 + ((score - 2000.0 ) / 60.0) # 偏差値
     people = Math.floor(Math.pow(100, ((deviation - 50) / 10))) # 何人に一人
     percent = (deviation - 50) * 4 # 東大合格率
     if deviation < 50
