@@ -28,7 +28,7 @@ class ResultView extends View
     $(document).on 'click', '#fb-share-result-btn', ->
       FB.ui {
         method: 'feed'
-        link: location.href
+        link: 'http://braintraining.treasurestudio.jp/four_operations/'
         name: '私の地頭力偏差値は' + Math.round(deviation * 10) / 10 + '！東大合格率は' + Math.round(percent) + '%、期待年収は' + income + '万円でした！'
         caption: 'あなたの地頭力は？地頭力診断 WEB'
       }, (response) ->
