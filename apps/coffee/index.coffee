@@ -69,3 +69,15 @@ $ ->
 
   init_common_views()
 
+  IPHONE_LINK = "https://itunes.apple.com/app/apple-store/id570172036?pt=550980&ct=shindan&mt=8"
+  ANDROID_LINK = "https://play.google.com/store/apps/details?id=net.viking.cocos2dx.BTAllGame&utm_source=shindan&utm_medium=web_app&utm_campaign=shindan_web_app"
+  isAndroid = navigator.userAgent.indexOf('Android') != -1
+  ua = navigator.userAgent
+  console.log isAndroid
+
+  $('.jsc-app').on 'click', ->
+    if isAndroid
+      location.href = ANDROID_LINK
+    else
+      location.href = IPHONE_LINK
+
